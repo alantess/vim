@@ -58,7 +58,7 @@ runtime! debian.vim
 " line enables syntax highlighting by default.
 if has("syntax")
   set background=dark
-  colorscheme PaperColor
+  colorscheme peachpuff
   syntax on
 endif
 
