@@ -1,12 +1,11 @@
 call plug#begin('~/.vim/plugged')
-
+Plug 'junegunn/fzf'
 Plug 'puremourning/vimspector'
 Plug 'peterhoeg/vim-qml'
 Plug 'hhatto/autopep8'
 Plug 'tpope/vim-commentary'
 Plug 'davidhalter/jedi-vim'
 Plug 'shougo/neocomplete.vim'
-
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
@@ -26,11 +25,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode'
 Plug 'NLKNguyen/papercolor-theme'
-
-
-
-
 call plug#end()
+
+
 
 
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
@@ -57,8 +54,6 @@ runtime! debian.vim
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
-  set background=dark
-  colorscheme peachpuff
   syntax on
 endif
 
@@ -87,19 +82,29 @@ set ruler
 set hlsearch
 set showmatch
 
+let g:PaperColor_Theme_Options = {
+      \   'theme': {
+        \     'default.dark': {
+          \       'override' : {
+            \         'color00' : ['#080808', '232'],
+            \         'linenumber_bg' : ['#080808', '232']
+            \       }
+            \     }
+            \   }
+            \ }
 
 
 let g:jedi#popup_select_first = 0
 autocmd FileType python setlocal completeopt-=preview
 
-filetype plugin on 
+filetype plugin on
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 let g:clang_format#style_options = {
-              \ "AccessModifierOffset" : -2,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11"}
+      \ "AccessModifierOffset" : -2,
+      \ "AllowShortIfStatementsOnASingleLine" : "true",
+      \ "AlwaysBreakTemplateDeclarations" : "true",
+      \ "Standard" : "C++11"}
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 " if you install vim-operator-user
@@ -110,12 +115,14 @@ let mapleader = "f"
 au BufWrite * :Autoformat
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-Space> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 
 vnoremap <Tab> >
 vnoremap <S-Tab> <
+set background=dark
+colorscheme PaperColor
 
 
 
@@ -124,3 +131,4 @@ vnoremap <S-Tab> <
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
+
