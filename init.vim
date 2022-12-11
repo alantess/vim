@@ -112,6 +112,7 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 let mapleader = "f"
 :map <leader>aa :! clear; python %<CR>
+:map <leader>fs :FZF<CR>
 au BufWrite * :Autoformat
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
