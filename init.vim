@@ -253,6 +253,7 @@ let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <leader>aa :!python %<CR>
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
