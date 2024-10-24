@@ -65,7 +65,7 @@ require("lazy").setup({
     -- Syntax highlighting
     {
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",  -- Automatically install language parsers
+        build = ":TSUpdate",  -- Automatically install and update language parsers
         config = function()
             require'nvim-treesitter.configs'.setup {
                 ensure_installed = { "python" },  -- Ensure Python parser is installed
@@ -88,6 +88,19 @@ require("lazy").setup({
                 },
             })
         end
+    },
+
+    -- Bracket Autocompletion
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            require('nvim-autopairs').setup{}
+        end
+    },
+
+    -- Vim Surround
+    { 
+        "tpope/vim-surround"
     },
 })
 
