@@ -58,7 +58,35 @@ require("lazy").setup({
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require'lspconfig'
-            lspconfig.pyright.setup{}
+            lspconfig.pyright.setup{}  -- LSP for Python
+        end
+    },
+
+    -- Syntax highlighting
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",  -- Automatically install language parsers
+        config = function()
+            require'nvim-treesitter.configs'.setup {
+                ensure_installed = { "python" },  -- Ensure Python parser is installed
+                highlight = {
+                    enable = true,  -- Enable syntax highlighting
+                },
+            }
+        end
+    },
+
+    -- Ruff Linter plugin
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local null_ls = require("null-ls")
+            null_ls.setup({
+                sources = {
+                    null_ls.builtins.diagnostics.ruff,  -- Use Ruff for linting
+                },
+            })
         end
     },
 })
